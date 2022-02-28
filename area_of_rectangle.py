@@ -33,9 +33,15 @@ def area_of_rectangle(height, width = None):
         #width = height
     #area = height * width
     #return area
-    if width:
-        width = height
-    import pdb; pdb.set_trace()
+    if width in locals():
+        pass
+    else:
+     width = height
+     height = int(height)
+     width = int(width)
+
+    	#import pdb; pdb.set_trace()
+
     area = height * width
     return area
 
@@ -43,13 +49,15 @@ if __name__ == '__main__':
     if (len(sys.argv) < 2) or (len(sys.argv) > 3):
         message = (
                 "{script_name}: Expecting one or two command-line arguments:\n"
-                "\tthe height of a square or the height and width of a "
+                "\the height of a square or the height and width of a "
                 "rectangle".format(script_name = sys.argv[0]))
         sys.exit(message)
-    height = sys.argv[1]
-    width = height
-    if len(sys.argv) > 3:
-        width = sys.argv[1]
+    if (len(sys.argv) == 2):
+        height = sys.argv[1]
+        width = height
+    if (len(sys.argv) == 3):
+        height = sys.argv[1]
+        width = sys.argv[2]
 
     area = area_of_rectangle(height, width)
 
